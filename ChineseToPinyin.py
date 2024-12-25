@@ -1,12 +1,17 @@
 import pandas as pd
 from pypinyin import pinyin, Style
+import os
 
 # 加载 Excel 文件
 input_file = "input.xlsx"  # 替换为您的文件名
 output_file = "output.xlsx"  # 转换后的文件名
 
+
 # 读取 Excel
-df = pd.read_excel(input_file)
+if not os.path.exists(input_file):
+    print(f"文件 {input_file} 不存在！")
+else:
+    df = pd.read_excel(input_file)
 
 # 定义拼音转换函数
 def chinese_to_pinyin(text):
